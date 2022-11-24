@@ -7,8 +7,8 @@ import img5 from '../../asstes/symphoney.png'
 
 const Brand = () => {
   return (
-    <div>
-      <div className="carousel lg:w-4/5 w-full  mx-auto">
+    <div className="mt-3">
+      <div className="carousel lg:w-1/2 w-full  mx-auto">
         <div id="item1" className="carousel-item w-full">
           <img src={img1} className="w-full h-48" alt=""/>
         </div>

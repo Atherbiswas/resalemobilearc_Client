@@ -1,16 +1,15 @@
 import React from 'react';
-import Brand from '../../Brand/Brand';
 import Banner from '../Banner/Banner';
+import CategorySection from '../CategorySection/CategorySection';
 import Features from '../Features/Features';
-import Categories from '../Products/Categories';
+
 
 const Home = () => {
     return (
         <div className='mx-5'>
            <Banner></Banner>
            <Features></Features>
-           <Categories></Categories>
-           <Brand></Brand>
+           <CategorySection></CategorySection>
         </div>
     );
 };
