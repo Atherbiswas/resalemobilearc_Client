@@ -1,0 +1,17 @@
+[
+    {
+        "category_id": "01",
+        "name": "Realme",
+        "img": "https://play-lh.googleusercontent.com/AzUHe1S5W-Z-3FRpqCC2BIDGHnS05mpoaDx3KhEWXy40GlFcg25kpGwtxc3_WpbJkLj2"
+    },
+    {
+        "category_id": "02",
+        "name": "Xiaomi Redmi",
+        "img": "https://ibb.co/F8nBV48"
+    },
+    {
+        "category_id": "03",
+        "name": "Samsung",
+        "img": "https://ibb.co/QYrdCkH"
+    }
+]

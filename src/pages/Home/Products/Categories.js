@@ -11,7 +11,7 @@ const Categories = () => {
     },[])
     return (
         <div>
-            <h1 className='text-2xl text-center font-bold'>Categories</h1>
+            <h1 className='text-2xl text-center font-bold'>Products Categories</h1>
             <div className='grid md:grid-cols-3 grid-cols-1 gap-4'>
             {
                 categories.map(category => <Category 

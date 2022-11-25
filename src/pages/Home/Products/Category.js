@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Products from "./Products";
+
 
 const Category = ({ category }) => {
-  const { name, img } = category;
+  const { name, img, category_id } = category;
+  const [products,setProduct]=useState([])
+
+  const handleProducts = (category_id) => {
+    fetch(`http://localhost:5000/categories/${category_id}`)
+    .then(res=>res.json())
+    .then(data => setProduct(data))
+  }
   return (
     <div className="mx-auto mt-4">
         <div className="avatar">
@@ -12,7 +21,7 @@ const Category = ({ category }) => {
     </div>
       <div className="text-center mt-2"> 
       <p className="text-xl font-semibold">{name}</p>
-      <Link><button className="btn btn-xs">See All products</button></Link>
+      <Link to={`/categories/${category.category_id}`}><button className="btn btn-xs" onClick={() => handleProducts(category.category_id)}>See All products</button></Link>
       </div>
     </div>
   );
