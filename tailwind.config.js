@@ -5,7 +5,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: "url('/src/asstes/banner-0.jpg')"
+      backgroundImage: "url('/src/asstes/banner-0.jpg')",
+      authBackground: "url('/src/asstes/authentication.jpg')"
     },
   },
   plugins: [require("daisyui")],
