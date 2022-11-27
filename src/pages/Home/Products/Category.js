@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { Link } from "react-router-dom";
 
 
 const Category = ({ category }) => {
-  const { name, img, category_id } = category;
-  const [products,setProduct]=useState([])
+  // let {catageryHandel}=UseHoocks()
+  const { name, img} = category;
 
-  const handleProducts = (category_id) => {
-    fetch(`http://localhost:5000/categories/${category_id}`)
-    .then(res=>res.json())
-    .then(data => setProduct(data))
-  }
+
+   const catageryHandel= (category_id)=>{
+       fetch(`http://localhost:5000/categories/${category_id}`)
+      .then(res=>res.json())
+      .then(data =>{
+        localStorage.setItem('b',JSON.stringify(data));
+        
+      })
+   };
+
+ 
   return (
     <div className="mx-auto mt-4">
         <div className="avatar">
@@ -20,10 +26,12 @@ const Category = ({ category }) => {
     </div>
       <div className="text-center mt-2"> 
       <p className="text-xl font-semibold">{name}</p>
-      <Link to={`/categories/${category.category_id}`}><button className="btn btn-xs" onClick={() => handleProducts(category.category_id)}>See All products</button></Link>
+      <button className="btn btn-xs" onClick={() =>catageryHandel(category.category_id)}><Link to={`/categories/${category.category_id}`}>See All products</Link></button>
       </div>
     </div>
   );
 };
 
 export default Category;
+
+// /categories/${category.category_id}
