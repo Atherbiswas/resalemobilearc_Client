@@ -1,6 +1,23 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+
 
 const MyOrders = () => {
+    const { user } = useContext(AuthContext);
+
+    const url = `http://localhost:5000/booking?email=${user?.email}`;
+
+    const {data: bookings = []} = useQuery({
+        queryKey: ['bookings', user?.email],
+        queryFn: async () => {
+            const res = await fetch(url);
+            const data = await res.json();
+            return data;
+        }
+        
+    })
+    
   return (
     <div className="mt-8">
       <h1 className="text-2xl font-semibold">My orders</h1>
@@ -9,32 +26,24 @@ const MyOrders = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Buyer Name</th>
+              <th>Product Name</th>
+              <th>Resale Price</th>
+              <th>Phone</th>
+              <th>Meeting Location</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Cy Ganderton</td>
-              <td>Quality Control Specialist</td>
-              <td>Blue</td>
-            </tr>
-
-            <tr className="hover">
-              <th>2</th>
-              <td>Hart Hagerty</td>
-              <td>Desktop Support Technician</td>
-              <td>Purple</td>
-            </tr>
-
-            <tr>
-              <th>3</th>
-              <td>Brice Swyre</td>
-              <td>Tax Accountant</td>
-              <td>Red</td>
-            </tr>
+            {
+                bookings.map((booking, i) => <tr>
+                    <th>{i+1}</th>
+                    <td>{booking.BuyerName}</td>
+                    <td>{booking.productName}</td>
+                    <td>{booking.ResalePrice}</td>
+                    <td>{booking.phone}</td>
+                    <td>{booking.MeetingLocation}</td>
+                  </tr>)
+            }
           </tbody>
         </table>
       </div>
