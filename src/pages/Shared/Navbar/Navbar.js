@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+  const {user, logoutUser} = useContext(AuthContext);
+
+  const handelLogout = () => {
+    logoutUser()
+    .then( () => {
+      toast.success('Logout success')
+    })
+    .catch(err => console.error(err))
+  }
     const navItems = <React.Fragment>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/blog">Blog</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
-            <li><Link to="/login">Login</Link></li>
+            {
+              user?.uid? <li><button onClick={handelLogout}>Logout</button></li>
+              :
+              <li><Link to="/login">Login</Link></li>
+            }
             
     </React.Fragment>
     return (

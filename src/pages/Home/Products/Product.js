@@ -12,7 +12,7 @@ const Product = ({ product, setEachProduct }) => {
     Post_Time,
   } = product;
   return (
-    <div className="card lg:w-96 bg-base-100 shadow-2xl">
+      <div className="card lg:w-96 bg-base-100 shadow-2xl">
       <figure className="px-10 pt-10">
         <img
           src={image}

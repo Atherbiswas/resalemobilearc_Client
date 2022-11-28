@@ -1,13 +1,15 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const {register, formState: { errors }, handleSubmit} = useForm();
     const [loginError, setLoginError] = useState();
-    const {loginUser} = useContext(AuthContext);
+    const navigate = useNavigate()
+    const {loginUser, providerLogin} = useContext(AuthContext);
 
     const handleLogin = data => {
         console.log(data);
@@ -18,6 +20,20 @@ const Login = () => {
           toast.success('Login success')
         })
         .catch(error => console.error(error))
+    }
+
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleLogin = () => {
+      providerLogin(googleProvider)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+        toast.success('You are logging on google account');
+        navigate('/')
+
+      })
+      .catch(error => console.error(error))
+
     }
 
     return (
@@ -56,7 +72,7 @@ const Login = () => {
         </form>
         <p>New to resalemobilearc? <Link to='/signup' className="text-secondary">Create a new account</Link> </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline btn-accent w-full">CONTINUE WITH GOOGLE</button>
+        <button onClick={handleGoogleLogin} className="btn btn-outline btn-accent w-full">CONTINUE WITH GOOGLE</button>
       </div>
     </div>
     );

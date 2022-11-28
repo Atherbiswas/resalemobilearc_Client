@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 
 const Category = ({ category }) => {
-  // let {catageryHandel}=UseHoocks()
   const { name, img} = category;
 
 
@@ -12,7 +11,7 @@ const Category = ({ category }) => {
       .then(res=>res.json())
       .then(data =>{
         localStorage.setItem('b',JSON.stringify(data));
-        
+        window.location.reload(true);
       })
    };
 
@@ -33,5 +32,3 @@ const Category = ({ category }) => {
 };
 
 export default Category;
-
-// /categories/${category.category_id}
