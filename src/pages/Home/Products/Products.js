@@ -5,9 +5,9 @@ import Product from './Product';
 
 
 const Products = () => {
-const [Products , setProducts]=useState([])
-   const [eachProduct , setEachProduct] = useState(null);
-   const a = useParams()
+    const [Products , setProducts]=useState([])
+    const [eachProduct , setEachProduct] = useState(null);
+    const a = useParams()
    
 
    useEffect( () => {
