@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const BookingModal = ({eachProduct, setEachProduct}) => {
     
     const {name, original_price, resale_price} = eachProduct;
+    const {user} = useContext(AuthContext);
 
     const bookingProduct = event => {
       event.preventDefault();
@@ -22,8 +25,21 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
         MeetingLocation: location
       }
 
-      console.log(booking)
-      setEachProduct(null);
+      fetch('http://localhost:5000/booking', {
+        method: 'POST',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify(booking)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if(data.acknowledged){
+          setEachProduct(null);
+          toast.success('Order confirmed')
+        }
+      })
 
     }
   return (
@@ -51,9 +67,9 @@ const BookingModal = ({eachProduct, setEachProduct}) => {
               </label>
             <input name="resale_price" type="text" defaultValue={resale_price} className="input input-bordered w-full"/>
 
-            <input name="YourName" type="text" placeholder="Your Name" className="input input-bordered w-full" />
+            <input name="YourName" type="text" defaultValue={user?.displayName} className="input input-bordered w-full" disabled/>
 
-            <input name="email" type="email" placeholder="Email address" className="input input-bordered w-full" />
+            <input name="email" type="email" defaultValue={user?.email} className="input input-bordered w-full" disabled/>
 
             <input name="phone" type="number" placeholder="Phone Number" className="input input-bordered w-full" />
 
