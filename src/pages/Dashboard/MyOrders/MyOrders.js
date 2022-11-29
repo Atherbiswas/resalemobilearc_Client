@@ -2,22 +2,20 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
-
 const MyOrders = () => {
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/booking?email=${user?.email}`;
+  const url = `https://used-products-resale-server-side-livid.vercel.app/booking?email=${user?.email}`;
 
-    const {data: bookings = []} = useQuery({
-        queryKey: ['bookings', user?.email],
-        queryFn: async () => {
-            const res = await fetch(url);
-            const data = await res.json();
-            return data;
-        }
-        
-    })
-    
+  const { data: bookings = [] } = useQuery({
+    queryKey: ["bookings", user?.email],
+    queryFn: async () => {
+      const res = await fetch(url);
+      const data = await res.json();
+      return data;
+    },
+  });
+
   return (
     <div className="mt-8">
       <h1 className="text-2xl font-semibold">My orders</h1>
@@ -34,16 +32,16 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {
-                bookings.map((booking, i) => <tr>
-                    <th>{i+1}</th>
-                    <td>{booking.BuyerName}</td>
-                    <td>{booking.productName}</td>
-                    <td>{booking.ResalePrice}</td>
-                    <td>{booking.phone}</td>
-                    <td>{booking.MeetingLocation}</td>
-                  </tr>)
-            }
+            {bookings.map((booking, i) => (
+              <tr>
+                <th>{i + 1}</th>
+                <td>{booking.BuyerName}</td>
+                <td>{booking.productName}</td>
+                <td>{booking.ResalePrice}</td>
+                <td>{booking.phone}</td>
+                <td>{booking.MeetingLocation}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

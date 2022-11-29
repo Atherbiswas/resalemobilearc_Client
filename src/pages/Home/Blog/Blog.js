@@ -1,14 +1,15 @@
 import React from "react";
-import img1 from '../../../asstes/react state.png'
-import img2 from '../../../asstes/prototypical.png'
-import img3 from '../../../asstes/unit test.png'
+import img1 from '../../../asstes/react state.png';
+import img2 from '../../../asstes/prototypical.png';
+import img3 from '../../../asstes/unit test.png';
+import img4 from '../../../asstes/angular_react_vue_main.jpg'
 
 const Blog = () => {
   return (
     <div>
       <div className="card lg:w-8/12 bg-base-100 shadow-2xl mx-auto mt-5">
         <figure>
-          <img src={img1} alt="Shoes" />
+          <img src={img1} alt="pic" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
@@ -30,7 +31,7 @@ const Blog = () => {
       </div>
       <div className="card lg:w-8/12 bg-base-100 shadow-2xl mx-auto mt-5">
         <figure>
-          <img src={img2} alt="Shoes" />
+          <img src={img2} alt="pic" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
@@ -44,26 +45,30 @@ const Blog = () => {
       </div>
       <div className="card lg:w-8/12 bg-base-100 shadow-2xl mx-auto mt-5">
         <figure>
-          <img src={img3} className="lg:w-3/5" alt="Shoes" />
+          <img src={img3} className="lg:w-3/5" alt="pic" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
             <div className="badge badge-secondary">03</div>
             What is a unit test? Why should we write unit tests?
           </h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <p>The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages.</p>
+          <p>A unit test is a way of testing a unit - the smallest piece of code that can be logically isolated in a system. In most programming languages, that is a function, a subroutine, a method or property. The isolated part of the definition is important. In his book "Working Effectively with Legacy Code", author Michael Feathers states that such tests are not unit tests when they rely on external systems:</p>
+          <p>The most common problems we have with unit testing usually aren't technical problems.People have a hard time adapting to new ways of working after spending time in an environment where unit testing amounts to loading up the latest build and seeing whether it starts or not can be difficult. Test infected groups are a cultural phenomenon. I have had the most success in changing how testing is done by finding one person that is interested and invested in staying up to date.</p>
         </div>
       </div>
       <div className="card lg:w-8/12 bg-base-100 shadow-2xl mx-auto mt-5">
         <figure>
-          <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
+          <img src={img4} className="lg:w-3/5" alt="pic" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">
-            <div className="badge badge-secondary">NEW</div>
-            Shoes!
+            <div className="badge badge-secondary">04</div>
+            React vs. Angular vs. Vue?
           </h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <p>React: React suits best projects that aim for simple front-end, but at the same time with the ambition to scale to the highest possible level.React is a perfect choice, if you want to learn one of the most popular frameworks in almost no time due to its code simplicity</p>
+          <p>Angular: Angular best fits in advanced and continously growing projects, that are capable of using its full potential.Angular is a good choice, if you are willing to sacrifice some time to learn TypeScript.</p>
+          <p>Vue: Vue.js best advantage is its performance, if you want your project to perform as fast as possible, Vue.js is your bet.Vue.js is begginer-friendly with its simple structure. You can learn new technologies and get, as for now, rare qualifications.</p>
         </div>
       </div>
     </div>
